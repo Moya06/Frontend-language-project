@@ -1,0 +1,976 @@
+/**
+ * Interactive activity content per language → level → module → activityId
+ * game types: 'quiz' | 'flashcard' | 'wordmatch' | 'fillblank'
+ */
+export const ACTIVITY_CONTENT = {
+  en: {
+    A1: {
+      games: {
+        'word-match': {
+          type: 'wordmatch',
+          title: 'Word Match — A1',
+          instructions: 'Match each English word with its meaning.',
+          pairs: [
+            { word: 'Hello',    match: 'A greeting' },
+            { word: 'Cat',      match: 'A domestic animal that meows' },
+            { word: 'Water',    match: 'A liquid you drink' },
+            { word: 'House',    match: 'A place where people live' },
+            { word: 'Apple',    match: 'A red or green fruit' },
+            { word: 'Book',     match: 'Pages with words to read' },
+          ],
+        },
+        'fill-gap': {
+          type: 'fillblank',
+          title: 'Fill the Gap — A1',
+          instructions: 'Choose the correct word to complete the sentence.',
+          sentences: [
+            { text: 'I ___ a student.', options: ['am', 'is', 'are', 'be'], correct: 0 },
+            { text: 'She ___ a teacher.', options: ['are', 'am', 'is', 'be'], correct: 2 },
+            { text: 'They ___ from Spain.', options: ['is', 'am', 'comes', 'are'], correct: 3 },
+            { text: 'We ___ English.', options: ['speaks', 'speak', 'spoke', 'spoken'], correct: 1 },
+            { text: 'He ___ a dog.', options: ['have', 'has', 'had', 'is having'], correct: 1 },
+            { text: 'The book ___ on the table.', options: ['are', 'is', 'am', 'be'], correct: 1 },
+          ],
+        },
+        'speed-translate': {
+          type: 'quiz',
+          title: 'Speed Translate — A1',
+          instructions: 'Translate these simple words to English. Choose the correct answer.',
+          questions: [
+            { text: 'How do you say "Hola" in English?', options: ['Bye', 'Hello', 'Thank you', 'Please'], correct: 1 },
+            { text: 'How do you say "Gato" in English?', options: ['Dog', 'Bird', 'Cat', 'Fish'], correct: 2 },
+            { text: 'How do you say "Casa" in English?', options: ['Car', 'House', 'School', 'Park'], correct: 1 },
+            { text: 'How do you say "Agua" in English?', options: ['Milk', 'Juice', 'Water', 'Tea'], correct: 2 },
+            { text: 'How do you say "Libro" in English?', options: ['Pen', 'Book', 'Chair', 'Table'], correct: 1 },
+          ],
+        },
+        'spelling-bee': {
+          type: 'quiz',
+          title: 'Spelling Bee — A1',
+          instructions: 'Choose the correct spelling.',
+          questions: [
+            { text: 'Which is spelled correctly?', options: ['Freind', 'Friend', 'Frend', 'Frien'], correct: 1 },
+            { text: 'Which is spelled correctly?', options: ['Scool', 'Shcool', 'School', 'Schol'], correct: 2 },
+            { text: 'Which is spelled correctly?', options: ['Techer', 'Teacher', 'Taacher', 'Teachr'], correct: 1 },
+            { text: 'Which is spelled correctly?', options: ['Hous', 'Howse', 'House', 'Hause'], correct: 2 },
+            { text: 'Which is spelled correctly?', options: ['Numbr', 'Number', 'Nummber', 'Nomber'], correct: 1 },
+          ],
+        },
+      },
+      grammar: {
+        'present-simple': {
+          type: 'quiz',
+          title: 'Present Simple — A1',
+          instructions: 'Choose the correct form of the verb.',
+          questions: [
+            { text: 'She ___ to school every day.', options: ['go', 'goes', 'going', 'gone'], correct: 1 },
+            { text: 'They ___ football on weekends.', options: ['plays', 'play', 'playing', 'played'], correct: 1 },
+            { text: 'He ___ in London.', options: ['live', 'lives', 'living', 'lived'], correct: 1 },
+            { text: 'We ___ English at school.', options: ['studies', 'study', 'studied', 'studying'], correct: 1 },
+            { text: 'I ___ coffee every morning.', options: ['drinks', 'drink', 'drank', 'drunk'], correct: 1 },
+            { text: 'Does she ___ a car?', options: ['has', 'have', 'having', 'had'], correct: 1 },
+          ],
+        },
+        'articles': {
+          type: 'quiz',
+          title: 'Articles (a/an/the) — A1',
+          instructions: 'Choose the correct article.',
+          questions: [
+            { text: 'I have ___ dog.', options: ['a', 'an', 'the', '(none)'], correct: 0 },
+            { text: 'She is ___ engineer.', options: ['a', 'an', 'the', '(none)'], correct: 1 },
+            { text: '___ sun is very hot today.', options: ['A', 'An', 'The', '(none)'], correct: 2 },
+            { text: 'He ate ___ apple for breakfast.', options: ['a', 'an', 'the', '(none)'], correct: 1 },
+            { text: 'Is there ___ bank near here?', options: ['a', 'an', 'the', '(none)'], correct: 0 },
+            { text: 'I play ___ guitar.', options: ['a', 'an', 'the', '(none)'], correct: 2 },
+          ],
+        },
+      },
+      listening: {
+        'cafe-dialogue': {
+          type: 'quiz',
+          title: 'Dialogue at a café — A1',
+          instructions: 'Read the dialogue and answer the questions.',
+          passage: 'Waiter: Good morning! What would you like?\nCustomer: I would like a coffee and a sandwich, please.\nWaiter: Of course. Anything else?\nCustomer: No, thank you. How much is it?\nWaiter: That\'s four euros, please.\nCustomer: Here you go. Thank you!\nWaiter: Thank you. Enjoy your meal!',
+          questions: [
+            { text: 'What does the customer order?', options: ['Tea and a cake', 'Coffee and a sandwich', 'Juice and a burger', 'Water and soup'], correct: 1 },
+            { text: 'How much does the customer pay?', options: ['Three euros', 'Five euros', 'Four euros', 'Two euros'], correct: 2 },
+            { text: 'When does this take place?', options: ['In the evening', 'At night', 'In the morning', 'At noon'], correct: 2 },
+            { text: 'What does the waiter say at the end?', options: ['Have a good night', 'Enjoy your meal', 'Come back soon', 'You\'re welcome'], correct: 1 },
+          ],
+        },
+        'weather-report': {
+          type: 'quiz',
+          title: 'Weather Report — A1',
+          instructions: 'Read the weather report and answer the questions.',
+          passage: 'Today\'s weather: Good morning. Today will be sunny and warm. The temperature is 22 degrees Celsius. In the afternoon, there may be some clouds, but no rain. Tomorrow will be cooler with temperatures around 18 degrees. Have a great day!',
+          questions: [
+            { text: 'What is the weather like today?', options: ['Rainy and cold', 'Sunny and warm', 'Cloudy and windy', 'Snowy'], correct: 1 },
+            { text: 'What is today\'s temperature?', options: ['18°C', '25°C', '22°C', '20°C'], correct: 2 },
+            { text: 'What will happen in the afternoon?', options: ['It will rain', 'It will snow', 'Some clouds may appear', 'It will be very hot'], correct: 2 },
+            { text: 'How will tomorrow be?', options: ['Hotter than today', 'The same', 'Cooler than today', 'Very cold'], correct: 2 },
+          ],
+        },
+      },
+      reading: {
+        'news-article': {
+          type: 'quiz',
+          title: 'Short News Article — A1',
+          instructions: 'Read the text and answer the questions.',
+          passage: 'London, Monday – A new park opened in the city centre yesterday. The park has trees, flowers, a lake, and a playground for children. Many families visited the park on the first day. The mayor said: "This is a great day for our city. The park will be a beautiful place for everyone to enjoy." The park is open every day from 8 am to 9 pm.',
+          questions: [
+            { text: 'Where did the new park open?', options: ['In a village', 'In the city centre', 'Outside the city', 'Near the sea'], correct: 1 },
+            { text: 'What does the park have?', options: ['A cinema and a pool', 'Trees, flowers, a lake and a playground', 'Only trees and flowers', 'A stadium and gardens'], correct: 1 },
+            { text: 'Who visited the park on the first day?', options: ['Only children', 'Only adults', 'Many families', 'Nobody'], correct: 2 },
+            { text: 'What time does the park close?', options: ['8 am', '9 am', '8 pm', '9 pm'], correct: 3 },
+          ],
+        },
+        'informal-email': {
+          type: 'quiz',
+          title: 'Informal Email — A1',
+          instructions: 'Read the email and answer the questions.',
+          passage: 'Hi Maria,\nHow are you? I am very well, thank you. I am writing because I want to tell you about my new school. It is very big and has a beautiful garden. My teacher\'s name is Mrs Green. She is very kind and funny. I have five new friends: Tom, Anna, Luis, Sophie and Jack. We eat lunch together every day.\n\nWrite to me soon!\nLove,\nEmma',
+          questions: [
+            { text: 'Who is writing the email?', options: ['Maria', 'Mrs Green', 'Emma', 'Tom'], correct: 2 },
+            { text: 'What is special about Emma\'s school?', options: ['It has a swimming pool', 'It has a beautiful garden', 'It is very small', 'It is very old'], correct: 1 },
+            { text: 'What is the teacher\'s name?', options: ['Mrs Brown', 'Mrs Green', 'Mrs White', 'Mrs Smith'], correct: 1 },
+            { text: 'How many new friends does Emma have?', options: ['Three', 'Four', 'Five', 'Six'], correct: 2 },
+          ],
+        },
+      },
+      vocab: {
+        'nature-animals': {
+          type: 'flashcard',
+          title: 'Nature & Animals — A1',
+          instructions: 'Flip each card to learn the word.',
+          cards: [
+            { front: '🐶 Dog', back: 'A common pet that barks. "My dog plays in the garden."' },
+            { front: '🐱 Cat', back: 'A common pet that meows. "The cat is sleeping on the sofa."' },
+            { front: '🌳 Tree', back: 'A tall plant with leaves. "There are many trees in the park."' },
+            { front: '🌸 Flower', back: 'A colourful plant. "She has flowers in her garden."' },
+            { front: '🦋 Butterfly', back: 'An insect with colourful wings. "I saw a butterfly in the garden."' },
+            { front: '🐦 Bird', back: 'An animal that can fly. "The bird is singing in the tree."' },
+            { front: '🌊 Sea', back: 'A large body of salt water. "We swim in the sea in summer."' },
+            { front: '⛰️ Mountain', back: 'A very high area of land. "We climbed the mountain."' },
+          ],
+        },
+        'home-furniture': {
+          type: 'flashcard',
+          title: 'Home & Furniture — A1',
+          instructions: 'Flip each card to learn the word.',
+          cards: [
+            { front: '🛋️ Sofa', back: 'A comfortable seat for two or more people. "We sit on the sofa to watch TV."' },
+            { front: '🛏️ Bed', back: 'Where you sleep at night. "I sleep in my bed every night."' },
+            { front: '🪑 Chair', back: 'A seat for one person. "Please sit on the chair."' },
+            { front: '🪟 Window', back: 'An opening in a wall with glass. "Open the window — it\'s hot!"' },
+            { front: '🚿 Shower', back: 'You use this to wash yourself. "I take a shower every morning."' },
+            { front: '🧹 Broom', back: 'Used to sweep the floor. "She swept the floor with a broom."' },
+            { front: '📺 Television', back: 'A screen you watch shows on. "We watch TV in the evening."' },
+            { front: '🍽️ Plate', back: 'You eat food from this. "Put the food on the plate."' },
+          ],
+        },
+      },
+    },
+    A2: {
+      games: {
+        'word-match': {
+          type: 'wordmatch',
+          title: 'Word Match — A2',
+          instructions: 'Match each word or phrase with its definition.',
+          pairs: [
+            { word: 'Journey',       match: 'Travel from one place to another' },
+            { word: 'Neighbour',     match: 'A person who lives next to you' },
+            { word: 'Recipe',        match: 'Instructions for making food' },
+            { word: 'Schedule',      match: 'A plan of things to do at set times' },
+            { word: 'Appointment',   match: 'A planned meeting at a specific time' },
+            { word: 'Complaint',     match: 'An expression of unhappiness about something' },
+          ],
+        },
+        'fill-gap': {
+          type: 'fillblank',
+          title: 'Fill the Gap — A2',
+          instructions: 'Choose the correct word or phrase.',
+          sentences: [
+            { text: 'I ___ to Paris last summer.', options: ['go', 'goes', 'went', 'gone'], correct: 2 },
+            { text: 'She ___ a book when I called.', options: ['reads', 'read', 'was reading', 'has read'], correct: 2 },
+            { text: 'He ___ never been to Japan.', options: ['is', 'has', 'have', 'was'], correct: 1 },
+            { text: 'We ___ live here for five years.', options: ['have', 'did', 'are', 'were'], correct: 0 },
+            { text: 'They ___ dinner when the fire alarm rang.', options: ['had', 'were having', 'have', 'are having'], correct: 1 },
+          ],
+        },
+        'speed-translate': {
+          type: 'quiz',
+          title: 'Speed Translate — A2',
+          instructions: 'Choose the correct English expression.',
+          questions: [
+            { text: 'What means "weather"?', options: ['Time', 'The atmospheric conditions outside', 'A type of shoe', 'A season'], correct: 1 },
+            { text: 'What does "postpone" mean?', options: ['To cancel', 'To move to a later time', 'To start early', 'To forget'], correct: 1 },
+            { text: 'What is an "invoice"?', options: ['An invitation', 'A bill for payment', 'A menu', 'A letter of complaint'], correct: 1 },
+            { text: '"Turn left" means…', options: ['Go straight', 'Change direction to the left side', 'Stop', 'Go back'], correct: 1 },
+          ],
+        },
+        'spelling-bee': {
+          type: 'quiz',
+          title: 'Spelling Bee — A2',
+          instructions: 'Choose the correctly spelled word.',
+          questions: [
+            { text: 'Which is correct?', options: ['Recieve', 'Recive', 'Receive', 'Receve'], correct: 2 },
+            { text: 'Which is correct?', options: ['Bussiness', 'Business', 'Bisness', 'Buisness'], correct: 1 },
+            { text: 'Which is correct?', options: ['Necessary', 'Nessecary', 'Necessery', 'Nescessary'], correct: 0 },
+            { text: 'Which is correct?', options: ['Occured', 'Occurred', 'Ocurred', 'Ocured'], correct: 1 },
+          ],
+        },
+      },
+      grammar: {
+        'present-simple': {
+          type: 'quiz',
+          title: 'Past Simple vs Present Perfect — A2',
+          instructions: 'Select the correct tense.',
+          questions: [
+            { text: 'I ___ my keys. I can\'t find them.', options: ['lost', 'have lost', 'lose', 'was losing'], correct: 1 },
+            { text: 'She ___ London in 2018.', options: ['has visited', 'visited', 'visit', 'is visiting'], correct: 1 },
+            { text: '___ you ever ___ sushi?', options: ['Did / eat', 'Have / eaten', 'Do / eat', 'Are / eating'], correct: 1 },
+            { text: 'He ___ just ___ the report.', options: ['did / finish', 'has / finished', 'is / finishing', 'does / finish'], correct: 1 },
+          ],
+        },
+        'articles': {
+          type: 'quiz',
+          title: 'Prepositions of Time & Place — A2',
+          instructions: 'Choose the correct preposition.',
+          questions: [
+            { text: 'She was born ___ 1995.', options: ['at', 'on', 'in', 'by'], correct: 2 },
+            { text: 'The meeting is ___ Monday.', options: ['in', 'at', 'on', 'by'], correct: 2 },
+            { text: 'He arrived ___ the airport early.', options: ['in', 'at', 'on', 'to'], correct: 1 },
+            { text: 'We meet ___ 8 o\'clock.', options: ['in', 'on', 'at', 'by'], correct: 2 },
+          ],
+        },
+      },
+      listening: {
+        'cafe-dialogue': {
+          type: 'quiz',
+          title: 'Hotel Check-In — A2',
+          instructions: 'Read the dialogue and answer the questions.',
+          passage: 'Receptionist: Good evening! Welcome to Hotel Sunrise. How can I help you?\nGuest: Hello, I have a reservation. My name is James Walker.\nReceptionist: Let me check... Yes, Mr Walker. You have a double room for three nights, from Monday to Thursday.\nGuest: That\'s correct. Could I request a room with a sea view?\nReceptionist: Of course! Room 208 on the second floor has a lovely sea view. Breakfast is served from 7 to 10 am in the restaurant.\nGuest: Perfect. What time is check-out?\nReceptionist: Check-out is at 11 am. Here is your key card. Enjoy your stay!',
+          questions: [
+            { text: 'What type of room does James have?', options: ['Single room', 'Suite', 'Double room', 'Triple room'], correct: 2 },
+            { text: 'How many nights is he staying?', options: ['Two', 'Three', 'Four', 'One'], correct: 1 },
+            { text: 'What view does room 208 have?', options: ['Garden view', 'City view', 'Mountain view', 'Sea view'], correct: 3 },
+            { text: 'When is check-out?', options: ['10 am', '12 pm', '11 am', '9 am'], correct: 2 },
+          ],
+        },
+        'weather-report': {
+          type: 'quiz',
+          title: 'Shopping Dialogue — A2',
+          instructions: 'Read and answer the questions.',
+          passage: 'Shop assistant: Can I help you?\nCustomer: Yes, I\'m looking for a birthday present for my sister. She loves music.\nShop assistant: How about this wireless speaker? It\'s very popular and only £35.\nCustomer: That sounds great. Does it work with phones?\nShop assistant: Yes, it connects to any smartphone via Bluetooth.\nCustomer: Perfect. I\'ll take it. Can I pay by card?\nShop assistant: Of course! Just tap here. Would you like a gift bag?\nCustomer: Yes, please. Oh, and could you gift-wrap it?\nShop assistant: No problem at all.',
+          questions: [
+            { text: 'What is the customer looking for?', options: ['A birthday present for her mother', 'A birthday present for her sister', 'A gift for a friend', 'Something for herself'], correct: 1 },
+            { text: 'How much does the speaker cost?', options: ['£25', '£45', '£35', '£30'], correct: 2 },
+            { text: 'How does the speaker connect to phones?', options: ['WiFi', 'Cable', 'Bluetooth', 'Infrared'], correct: 2 },
+            { text: 'How does the customer pay?', options: ['Cash', 'Card', 'Cheque', 'Transfer'], correct: 1 },
+          ],
+        },
+      },
+      reading: {
+        'news-article': {
+          type: 'quiz',
+          title: 'Healthy Eating Article — A2',
+          instructions: 'Read and answer the questions.',
+          passage: 'Eating well is important for staying healthy. Experts recommend eating at least five portions of fruit and vegetables every day. You should also drink plenty of water — about eight glasses per day. Try to avoid too much sugar, salt, and processed food. Instead, choose fresh and natural ingredients. Regular meals are also important. Skipping breakfast can make you tired and less focused. A balanced diet gives you energy and helps your body work well.',
+          questions: [
+            { text: 'How many portions of fruit and vegetables per day are recommended?', options: ['Three', 'Five', 'Seven', 'Two'], correct: 1 },
+            { text: 'How much water should you drink per day?', options: ['Four glasses', 'Six glasses', 'Ten glasses', 'Eight glasses'], correct: 3 },
+            { text: 'What should you try to avoid?', options: ['Fruit and vegetables', 'Natural ingredients', 'Too much sugar, salt, and processed food', 'Regular meals'], correct: 2 },
+            { text: 'What can happen if you skip breakfast?', options: ['You may gain weight', 'You feel tired and less focused', 'You become stronger', 'Nothing happens'], correct: 1 },
+          ],
+        },
+        'informal-email': {
+          type: 'quiz',
+          title: 'Postcard from Holiday — A2',
+          instructions: 'Read and answer the questions.',
+          passage: 'Dear Grandma,\nGreetings from Barcelona! We arrived on Saturday and the weather has been amazing — sunny and 28 degrees every day. Yesterday we visited the famous Sagrada Família church. It was absolutely incredible! Today we walked along La Rambla and tried tapas for the first time. I had patatas bravas and chorizo — delicious!\nI wish you were here with us. We are taking lots of photos to show you when we get back on Friday.\nLots of love,\nSophie',
+          questions: [
+            { text: 'Where is Sophie?', options: ['Madrid', 'Lisbon', 'Barcelona', 'Rome'], correct: 2 },
+            { text: 'What was the weather like?', options: ['Cloudy and cold', 'Sunny and warm', 'Rainy', 'Windy'], correct: 1 },
+            { text: 'What did they visit yesterday?', options: ['A beach', 'A museum', 'The Sagrada Família', 'A palace'], correct: 2 },
+            { text: 'When do they return home?', options: ['Saturday', 'Sunday', 'Thursday', 'Friday'], correct: 3 },
+          ],
+        },
+      },
+      vocab: {
+        'nature-animals': {
+          type: 'flashcard',
+          title: 'Food & Drink — A2',
+          instructions: 'Flip each card to learn the vocabulary.',
+          cards: [
+            { front: '🥑 Avocado', back: 'A creamy green fruit. "I love avocado on toast."' },
+            { front: '🥦 Broccoli', back: 'A dark green vegetable. "Broccoli is very healthy."' },
+            { front: '🧀 Cheese', back: 'A dairy product made from milk. "I put cheese on my pasta."' },
+            { front: '🍜 Noodles', back: 'Long thin pasta used in Asian dishes. "I ate noodles with vegetables."' },
+            { front: '🧁 Cupcake', back: 'A small individual cake. "She baked chocolate cupcakes."' },
+            { front: '☕ Coffee', back: 'A hot drink made from coffee beans. "I drink coffee every morning."' },
+            { front: '🍣 Sushi', back: 'Japanese rice rolls with fish. "Have you ever eaten sushi?"' },
+            { front: '🌮 Taco', back: 'A Mexican dish in a folded tortilla. "Tacos are my favourite food."' },
+          ],
+        },
+        'home-furniture': {
+          type: 'flashcard',
+          title: 'Clothes & Fashion — A2',
+          instructions: 'Flip each card to learn the vocabulary.',
+          cards: [
+            { front: '👗 Dress', back: 'A one-piece garment for women. "She wore a red dress to the party."' },
+            { front: '🧥 Coat', back: 'A warm outer garment. "Put on your coat — it\'s cold!"' },
+            { front: '👟 Trainers', back: 'Casual sports shoes. "He bought new trainers for the gym."' },
+            { front: '🧣 Scarf', back: 'Worn around the neck for warmth. "She wore a blue scarf."' },
+            { front: '🕶️ Sunglasses', back: 'Dark glasses worn in bright light. "Don\'t forget your sunglasses!"' },
+            { front: '👜 Handbag', back: 'A bag carried by hand or on the arm. "She bought a leather handbag."' },
+            { front: '🧤 Gloves', back: 'Cover for your hands. "My gloves keep my hands warm."' },
+            { front: '🎩 Hat', back: 'A covering for the head. "He wore a top hat to the event."' },
+          ],
+        },
+      },
+    },
+    B1: {
+      games: {
+        'word-match': {
+          type: 'wordmatch',
+          title: 'Word Match — B1',
+          instructions: 'Match each word with its correct definition.',
+          pairs: [
+            { word: 'Adequate',   match: 'Satisfactory or acceptable in quality' },
+            { word: 'Ambitious',  match: 'Having a strong desire to succeed' },
+            { word: 'Diverse',    match: 'Showing variety; very different' },
+            { word: 'Eloquent',   match: 'Fluent and persuasive in speaking' },
+            { word: 'Frugal',     match: 'Careful with money; avoiding waste' },
+            { word: 'Inevitable', match: 'Certain to happen; unavoidable' },
+          ],
+        },
+        'fill-gap': {
+          type: 'fillblank',
+          title: 'Fill the Gap — B1',
+          instructions: 'Choose the right word or tense.',
+          sentences: [
+            { text: 'Despite the rain, we ___ to finish the project on time.', options: ['managed', 'manage', 'had managed', 'would manage'], correct: 0 },
+            { text: 'If I ___ harder, I would pass the exam.', options: ['study', 'studied', 'have studied', 'will study'], correct: 1 },
+            { text: 'She regrets ___ so much time on social media.', options: ['spend', 'spent', 'spending', 'to spend'], correct: 2 },
+            { text: 'He suggested ___ a different approach.', options: ['try', 'to try', 'trying', 'tried'], correct: 2 },
+            { text: 'The meeting was ___ because of the storm.', options: ['cancel', 'cancelled', 'cancelling', 'to cancel'], correct: 1 },
+          ],
+        },
+        'speed-translate': {
+          type: 'quiz',
+          title: 'Phrasal Verbs — B1',
+          instructions: 'Choose the meaning of each phrasal verb.',
+          questions: [
+            { text: '"Give up" means…', options: ['To start something new', 'To stop trying', 'To give a gift', 'To go up'], correct: 1 },
+            { text: '"Look after" means…', options: ['To search for', 'To take care of', 'To look behind', 'To investigate'], correct: 1 },
+            { text: '"Run out of" means…', options: ['To sprint away', 'To leave quickly', 'To have no more of something', 'To escape from'], correct: 2 },
+            { text: '"Put off" means…', options: ['To turn off', 'To postpone', 'To remove', 'To push away'], correct: 1 },
+          ],
+        },
+        'spelling-bee': {
+          type: 'quiz',
+          title: 'Spelling Bee — B1',
+          instructions: 'Choose the correctly spelled word.',
+          questions: [
+            { text: 'Which is correct?', options: ['Accomodate', 'Accommodate', 'Acomodate', 'Accomadate'], correct: 1 },
+            { text: 'Which is correct?', options: ['Occurrence', 'Occurence', 'Ocurrence', 'Oceurrence'], correct: 0 },
+            { text: 'Which is correct?', options: ['Privilige', 'Privelege', 'Privilege', 'Priviledge'], correct: 2 },
+            { text: 'Which is correct?', options: ['Committment', 'Commitment', 'Comitment', 'Commitmet'], correct: 1 },
+          ],
+        },
+      },
+      grammar: {
+        'present-simple': {
+          type: 'quiz',
+          title: 'Conditionals (1st & 2nd) — B1',
+          instructions: 'Choose the correct conditional form.',
+          questions: [
+            { text: 'If it ___, we will cancel the match.', options: ['rained', 'rains', 'rain', 'would rain'], correct: 1 },
+            { text: 'If I ___ a car, I would drive to work.', options: ['have', 'had', 'would have', 'will have'], correct: 1 },
+            { text: 'She ___ call you if she had more time.', options: ['will', 'would', 'can', 'might'], correct: 1 },
+            { text: 'Unless you study, you ___ pass the exam.', options: ['will', 'would', "won't", "wouldn't"], correct: 2 },
+          ],
+        },
+        'past-tense': {
+          type: 'quiz',
+          title: 'Past Simple vs. Past Continuous — B1',
+          instructions: 'Choose the correct tense.',
+          questions: [
+            { text: 'I ___ TV when the doorbell rang.', options: ['watched', 'was watching', 'had watched', 'would watch'], correct: 1 },
+            { text: 'While she ___, the lights went out.', options: ['cooked', 'was cooking', 'cooks', 'had cooked'], correct: 1 },
+            { text: 'He ___ the car and drove away.', options: ['started', 'was starting', 'would start', 'had started'], correct: 0 },
+            { text: 'They ___ when we arrived.', options: ['ate', 'were eating', 'had eaten', 'would eat'], correct: 1 },
+          ],
+        },
+      },
+      listening: {
+        'cafe-dialogue': {
+          type: 'quiz',
+          title: 'Job Interview — B1',
+          instructions: 'Read the dialogue and answer the questions.',
+          passage: 'Interviewer: Thank you for coming in today, Ms Chen. Could you briefly describe your work experience?\nMs Chen: Of course. I have worked in customer service for three years, mostly in retail. Last year I was promoted to team leader.\nInterviewer: Excellent. Why are you looking for a new job?\nMs Chen: I enjoy my current role, but I feel ready for more responsibility and a new challenge.\nInterviewer: What would you say is your greatest strength?\nMs Chen: I think I\'m very organised and I work well under pressure. I always meet deadlines.\nInterviewer: And a weakness?\nMs Chen: Sometimes I take on too many tasks at once. I\'m working on delegating more effectively.',
+          questions: [
+            { text: 'How long has Ms Chen worked in customer service?', options: ['One year', 'Two years', 'Three years', 'Five years'], correct: 2 },
+            { text: 'What happened to her last year?', options: ['She changed careers', 'She was promoted', 'She retired', 'She started a business'], correct: 1 },
+            { text: 'Why is she looking for a new job?', options: ['She dislikes her manager', 'She wants more money', 'She wants more responsibility', 'She was fired'], correct: 2 },
+            { text: 'What is her self-described weakness?', options: ['Being unorganised', 'Taking on too many tasks at once', 'Working poorly under pressure', 'Missing deadlines'], correct: 1 },
+          ],
+        },
+        'weather-report': {
+          type: 'quiz',
+          title: 'Radio News — B1',
+          instructions: 'Read the radio news snippet and answer.',
+          passage: 'This is the afternoon news. Scientists at Cambridge University have announced a breakthrough in renewable energy. They have developed a new type of solar panel that is twice as efficient as current models and costs significantly less to produce. The technology could be ready for mass production within three years. Environmental groups have welcomed the news, calling it "a major step forward in the fight against climate change." The government has promised to invest £50 million to support further research.',
+          questions: [
+            { text: 'Where are the scientists from?', options: ['Oxford University', 'Cambridge University', 'Harvard University', 'MIT'], correct: 1 },
+            { text: 'What did they develop?', options: ['A wind turbine', 'A new type of electric car', 'A more efficient solar panel', 'A hydrogen battery'], correct: 2 },
+            { text: 'When could the technology be ready for mass production?', options: ['Next year', 'In three years', 'In five years', 'In ten years'], correct: 1 },
+            { text: 'How much will the government invest?', options: ['£5 million', '£500 million', '£50 million', '£15 million'], correct: 2 },
+          ],
+        },
+      },
+      reading: {
+        'news-article': {
+          type: 'quiz',
+          title: 'The Benefits of Exercise — B1',
+          instructions: 'Read and answer the questions.',
+          passage: 'Regular physical exercise offers a wide range of benefits for both the body and the mind. Doctors recommend at least 150 minutes of moderate exercise per week — the equivalent of 30 minutes, five days a week. Exercise can reduce the risk of heart disease, diabetes, and obesity. It also improves mental health by releasing endorphins, chemicals in the brain that create feelings of happiness. Furthermore, exercise improves sleep quality and boosts energy levels throughout the day. Despite these benefits, surveys show that over 60% of adults do not meet the recommended levels of activity.',
+          questions: [
+            { text: 'How many minutes of moderate exercise per week do doctors recommend?', options: ['100 minutes', '200 minutes', '150 minutes', '60 minutes'], correct: 2 },
+            { text: 'What chemicals does exercise release in the brain?', options: ['Serotonin', 'Dopamine', 'Adrenaline', 'Endorphins'], correct: 3 },
+            { text: 'Which conditions can exercise help reduce the risk of?', options: ['Headaches and colds', 'Heart disease, diabetes and obesity', 'Only mental health issues', 'Broken bones'], correct: 1 },
+            { text: 'What percentage of adults do not meet recommended activity levels?', options: ['Over 40%', 'Over 70%', 'Over 60%', 'Over 50%'], correct: 2 },
+          ],
+        },
+        'informal-email': {
+          type: 'quiz',
+          title: 'Formal Letter — B1',
+          instructions: 'Read the formal letter and answer.',
+          passage: 'Dear Sir or Madam,\nI am writing to express my disappointment with a recent purchase from your online store. On 15th January, I ordered a laptop bag (Order #45821) which was advertised as arriving within 5 working days. However, as of today — 10 days later — the item has still not arrived.\nI have tried to contact your customer service team three times by phone and once by email, but I have not received any response. This level of service is unacceptable.\nI would appreciate either a full refund or immediate delivery of the product. I look forward to your prompt response.\nYours faithfully,\nDaniel Wright',
+          questions: [
+            { text: 'What did Daniel order?', options: ['A laptop', 'A laptop bag', 'A backpack', 'A suitcase'], correct: 1 },
+            { text: 'When did he place the order?', options: ['15th December', '5th January', '15th January', '10th January'], correct: 2 },
+            { text: 'How many times did he contact customer service?', options: ['Once', 'Twice', 'Three times by phone plus once by email', 'Five times'], correct: 2 },
+            { text: 'What does Daniel request?', options: ['An apology only', 'A discount on a future order', 'A refund or immediate delivery', 'Free products'], correct: 2 },
+          ],
+        },
+      },
+      vocab: {
+        'nature-animals': {
+          type: 'flashcard',
+          title: 'Work & Professions — B1',
+          instructions: 'Flip each card to learn the vocabulary.',
+          cards: [
+            { front: '⚖️ Lawyer', back: 'A professional who advises on legal matters. "The lawyer defended his client in court."' },
+            { front: '🏗️ Architect', back: 'A person who designs buildings. "The architect designed a stunning skyscraper."' },
+            { front: '💊 Pharmacist', back: 'A professional who prepares and sells medicines. "Ask the pharmacist about side effects."' },
+            { front: '📊 Accountant', back: 'A person who manages financial records. "The accountant filed the company\'s taxes."' },
+            { front: '🔬 Scientist', back: 'A person who studies the natural world. "The scientist published her research."' },
+            { front: '🎨 Graphic Designer', back: 'Creates visual content for communication. "The graphic designer made the logo."' },
+            { front: '✈️ Pilot', back: 'Flies aircraft. "The pilot landed the plane safely despite the bad weather."' },
+            { front: '🧑‍💻 Software Engineer', back: 'Develops computer programs. "The software engineer fixed the bug overnight."' },
+          ],
+        },
+        'home-furniture': {
+          type: 'flashcard',
+          title: 'Technology — B1',
+          instructions: 'Flip each card to learn the vocabulary.',
+          cards: [
+            { front: '💻 Laptop', back: 'A portable personal computer. "I work on my laptop every day."' },
+            { front: '📱 Smartphone', back: 'A mobile phone with advanced computing ability. "My smartphone has a great camera."' },
+            { front: '🖨️ Printer', back: 'A device that prints documents. "The printer ran out of ink."' },
+            { front: '🔋 Battery', back: 'Stores electrical energy. "My phone battery is at 5% — I need to charge it."' },
+            { front: '🌐 Browser', back: 'Software used to access the internet. "I use Chrome as my browser."' },
+            { front: '☁️ Cloud Storage', back: 'Online storage for files. "I save my photos to cloud storage."' },
+            { front: '🔌 Charger', back: 'A device that refills a battery. "Have you seen my phone charger?"' },
+            { front: '📡 Wi-Fi', back: 'Wireless internet connection. "What\'s the Wi-Fi password?"' },
+          ],
+        },
+      },
+    },
+    B2: {
+      games: {
+        'word-match': {
+          type: 'wordmatch',
+          title: 'Word Match — B2',
+          instructions: 'Match each advanced word to its meaning.',
+          pairs: [
+            { word: 'Ambiguous',   match: 'Having more than one possible meaning' },
+            { word: 'Benevolent',  match: 'Kind and generous' },
+            { word: 'Candid',      match: 'Truthful and straightforward' },
+            { word: 'Detrimental', match: 'Causing harm or damage' },
+            { word: 'Ephemeral',   match: 'Lasting for only a short time' },
+            { word: 'Tacit',       match: 'Understood without being stated' },
+          ],
+        },
+        'fill-gap': {
+          type: 'fillblank',
+          title: 'Fill the Gap — B2',
+          instructions: 'Choose the most natural or correct option.',
+          sentences: [
+            { text: 'Not only ___ he fail the exam, but he also lost his scholarship.', options: ['did', 'had', 'would', 'does'], correct: 0 },
+            { text: '___ she been more careful, the accident would never have happened.', options: ['If', 'Had', 'Should', 'Were'], correct: 1 },
+            { text: 'The decision, ___ was controversial, was ultimately approved.', options: ['that', 'which', 'who', 'what'], correct: 1 },
+            { text: 'He spoke as if he ___ the answer all along.', options: ['knows', 'knew', 'has known', 'would know'], correct: 1 },
+            { text: 'The policy is aimed ___ reducing carbon emissions by 40%.', options: ['at', 'for', 'to', 'in'], correct: 0 },
+          ],
+        },
+        'speed-translate': {
+          type: 'quiz',
+          title: 'Idioms — B2',
+          instructions: 'What do these English idioms mean?',
+          questions: [
+            { text: '"Bite the bullet" means…', options: ['To eat quickly', 'To endure a painful situation with courage', 'To shoot a gun', 'To be very hungry'], correct: 1 },
+            { text: '"Under the weather" means…', options: ['Outdoors in bad weather', 'Feeling slightly ill', 'Very happy', 'Confused about something'], correct: 1 },
+            { text: '"The ball is in your court" means…', options: ['Playing tennis', 'It is now your responsibility to take action', 'Watching sport', 'Making a legal decision'], correct: 1 },
+            { text: '"Burn the midnight oil" means…', options: ['Start a fire', 'Waste energy', 'Work late into the night', 'Cook a meal'], correct: 2 },
+          ],
+        },
+        'spelling-bee': {
+          type: 'quiz',
+          title: 'Tricky Spellings — B2',
+          instructions: 'Spot the correctly spelled word.',
+          questions: [
+            { text: 'Which is correct?', options: ['Harrassment', 'Harassment', 'Harrasment', 'Harasment'], correct: 1 },
+            { text: 'Which is correct?', options: ['Consciencious', 'Conscientous', 'Conscientious', 'Consientious'], correct: 2 },
+            { text: 'Which is correct?', options: ['Supersede', 'Supercede', 'Suparsede', 'Superseed'], correct: 0 },
+            { text: 'Which is correct?', options: ['Millenium', 'Millennium', 'Milenium', 'Milennium'], correct: 1 },
+          ],
+        },
+      },
+      grammar: {
+        'present-simple': {
+          type: 'quiz',
+          title: 'Third Conditional — B2',
+          instructions: 'Choose the correct form.',
+          questions: [
+            { text: 'If she ___ the warning, she wouldn\'t have crashed.', options: ['heard', 'had heard', 'would hear', 'hears'], correct: 1 },
+            { text: 'They ___ the project if they had had more time.', options: ['would finish', 'would have finished', 'had finished', 'finished'], correct: 1 },
+            { text: 'If I ___ the job offer, I would have regretted it.', options: ['refused', 'had refused', 'would refuse', 'refuse'], correct: 1 },
+            { text: 'She ___ the exam if she had been better prepared.', options: ['passed', 'would pass', 'would have passed', 'has passed'], correct: 2 },
+          ],
+        },
+        'past-tense': {
+          type: 'quiz',
+          title: 'Passive Voice — B2',
+          instructions: 'Transform or identify the correct passive sentence.',
+          questions: [
+            { text: '"They built this bridge in 1890." In passive voice:', options: ['This bridge was built in 1890.', 'This bridge is built in 1890.', 'This bridge has been built in 1890.', 'This bridge built in 1890.'], correct: 0 },
+            { text: '"The report ___ by tomorrow." (must / complete)', options: ['must complete', 'must be completed', 'must have completed', 'must completing'], correct: 1 },
+            { text: '"A new policy ___ currently ___ by the government." (discuss)', options: ['is / discussed', 'is / being discussed', 'has / discussed', 'was / discussing'], correct: 1 },
+            { text: 'Which sentence is in the passive voice?', options: ['The chef cooked the meal perfectly.', 'The meal was cooked perfectly.', 'Cooking the meal took two hours.', 'The chef is cooking the meal.'], correct: 1 },
+          ],
+        },
+      },
+      listening: {
+        'cafe-dialogue': {
+          type: 'quiz',
+          title: 'Business Meeting — B2',
+          instructions: 'Read the extract and answer.',
+          passage: "CEO: Right, let's move on to the quarterly results. Finance, over to you.\nFinance Director: Thank you. Overall revenue grew by 12% compared to the same quarter last year. However, operating costs increased by 18%, which has squeezed our profit margins.\nCEO: What's driving the cost increase?\nFinance Director: Primarily energy costs and supply chain disruptions. We also invested heavily in staff training this quarter.\nCEO: And the outlook for Q4?\nFinance Director: Cautiously optimistic. If energy prices stabilise, we should see margins recover. We're also launching two new product lines in October which should boost revenue.\nCEO: Good. Let's make sure marketing is fully aligned on that launch.",
+          questions: [
+            { text: 'By how much did revenue grow?', options: ['8%', '12%', '18%', '20%'], correct: 1 },
+            { text: 'What caused operating costs to rise?', options: ['Staff wages and rent', 'Energy costs and supply chain issues', 'Marketing spend', 'New product development'], correct: 1 },
+            { text: 'What is the outlook for Q4?', options: ['Very negative', 'Extremely positive', 'Cautiously optimistic', 'Unknown'], correct: 2 },
+            { text: 'When will the new product lines launch?', options: ['September', 'October', 'November', 'December'], correct: 1 },
+          ],
+        },
+        'weather-report': {
+          type: 'quiz',
+          title: 'Documentary Extract — B2',
+          instructions: 'Read and answer the questions.',
+          passage: "Coral reefs cover less than 1% of the ocean floor, yet they support approximately 25% of all marine species. They are sometimes called the 'rainforests of the sea' due to their extraordinary biodiversity. However, coral reefs are under severe threat. Rising sea temperatures cause coral bleaching — a process where corals expel the algae living in their tissues, turning white and becoming vulnerable to disease. Scientists estimate that if global temperatures rise by just 2°C above pre-industrial levels, over 90% of coral reefs will be severely damaged or destroyed. Conservation efforts include creating marine protected areas and developing heat-resistant coral strains.",
+          questions: [
+            { text: 'What percentage of marine species do coral reefs support?', options: ['10%', '1%', '25%', '50%'], correct: 2 },
+            { text: 'Why are they called "rainforests of the sea"?', options: ['They are large and green', 'They produce oxygen', 'Because of their extraordinary biodiversity', 'They are found in tropical areas'], correct: 2 },
+            { text: 'What causes coral bleaching?', options: ['Overfishing', 'Oil spills', 'Rising sea temperatures', 'Plastic pollution'], correct: 2 },
+            { text: 'What percentage of reefs could be damaged with a 2°C temperature rise?', options: ['Over 50%', 'Over 70%', 'Over 80%', 'Over 90%'], correct: 3 },
+          ],
+        },
+      },
+      reading: {
+        'news-article': {
+          type: 'quiz',
+          title: 'Artificial Intelligence — B2',
+          instructions: 'Read and answer.',
+          passage: "Artificial intelligence is transforming industries at an unprecedented pace. From healthcare, where AI systems can detect cancer with greater accuracy than many radiologists, to finance, where algorithms predict market movements, the technology is reshaping how we work and live. However, the rise of AI also raises significant ethical concerns. Critics worry about algorithmic bias — where AI systems reflect and amplify existing social prejudices. Privacy advocates highlight the dangers of mass surveillance enabled by facial recognition technology. Meanwhile, economists debate whether AI will create more jobs than it destroys, or trigger widespread unemployment.",
+          questions: [
+            { text: 'In healthcare, what can AI systems do?', options: ['Perform surgery', 'Detect cancer with high accuracy', 'Replace doctors entirely', 'Manufacture medicines'], correct: 1 },
+            { text: 'What is "algorithmic bias"?', options: ['A computer malfunction', 'When AI systems reflect and amplify social prejudices', 'A type of programming error', 'Bias against using AI'], correct: 1 },
+            { text: 'What concern do privacy advocates raise?', options: ['AI replacing teachers', 'Mass surveillance through facial recognition', 'AI writing novels', 'Online shopping algorithms'], correct: 1 },
+            { text: 'What do economists debate?', options: ['The cost of AI hardware', 'Whether AI will create or destroy jobs', 'Who invented AI', 'How to regulate the internet'], correct: 1 },
+          ],
+        },
+        'informal-email': {
+          type: 'quiz',
+          title: 'Opinion Article — B2',
+          instructions: 'Read the opinion piece and answer.',
+          passage: "The debate over whether university education should be free has intensified in recent years. Proponents argue that universal access to higher education reduces inequality, enables social mobility, and produces a more educated, productive workforce. They point to countries such as Germany and Denmark, where tuition is free and graduate unemployment remains low. Opponents, however, contend that free university would be prohibitively expensive for governments and might reduce the perceived value of a degree. They also question whether it is fair for all taxpayers — including those who never attended university — to fund the degrees of future high earners.",
+          questions: [
+            { text: 'What do proponents of free university argue?', options: ['Degrees are worthless', 'It reduces inequality and improves social mobility', 'All students are lazy', 'Universities should be privatised'], correct: 1 },
+            { text: 'Which countries are mentioned with free university?', options: ['France and Sweden', 'USA and UK', 'Germany and Denmark', 'Canada and Norway'], correct: 2 },
+            { text: 'What do opponents worry about regarding cost?', options: ['University buildings', 'It would be too expensive for governments', 'Student accommodation', 'Research funding'], correct: 1 },
+            { text: 'Whose money do opponents say funds free degrees unfairly?', options: ['Students', 'Corporations', 'All taxpayers, including non-graduates', 'The government itself'], correct: 2 },
+          ],
+        },
+      },
+      vocab: {
+        'nature-animals': {
+          type: 'flashcard',
+          title: 'Environment — B2',
+          instructions: 'Flip each card to learn key environmental vocabulary.',
+          cards: [
+            { front: '🌡️ Global Warming', back: 'The gradual increase in Earth\'s average temperature. "Global warming is caused largely by greenhouse gas emissions."' },
+            { front: '♻️ Sustainability', back: 'Meeting present needs without compromising future generations. "Sustainability is central to the company\'s strategy."' },
+            { front: '🌬️ Renewable Energy', back: 'Energy from sources that are naturally replenished. "Solar and wind are forms of renewable energy."' },
+            { front: '🏭 Carbon Footprint', back: 'Total greenhouse gases produced by an activity. "Flying has a large carbon footprint."' },
+            { front: '🌿 Biodiversity', back: 'The variety of life in a particular habitat. "Rainforests have extraordinary biodiversity."' },
+            { front: '🚰 Deforestation', back: 'Clearing forests on a large scale. "Deforestation destroys animal habitats."' },
+            { front: '🌊 Ocean Acidification', back: 'The reduction in pH of the ocean. "Ocean acidification harms coral reefs."' },
+            { front: '💧 Drought', back: 'A prolonged period of abnormally low rainfall. "The drought destroyed crops across the region."' },
+          ],
+        },
+        'home-furniture': {
+          type: 'flashcard',
+          title: 'Business & Economics — B2',
+          instructions: 'Flip each card to learn key vocabulary.',
+          cards: [
+            { front: '📈 Inflation', back: 'The rate at which prices rise. "High inflation reduces purchasing power."' },
+            { front: '🏦 Interest Rate', back: 'The charge for borrowing money. "The central bank raised interest rates."' },
+            { front: '💹 GDP', back: 'Gross Domestic Product — total value of goods and services produced. "The country\'s GDP grew by 3%."' },
+            { front: '🤝 Merger', back: 'When two companies combine into one. "The merger created the world\'s largest bank."' },
+            { front: '📉 Recession', back: 'A period of economic decline. "The country entered recession after the crisis."' },
+            { front: '📋 Fiscal Policy', back: 'Government decisions on spending and taxes. "The fiscal policy aimed to stimulate growth."' },
+            { front: '🛒 Supply Chain', back: 'The network that produces and delivers a product. "Supply chain disruptions caused shortages."' },
+            { front: '💰 Revenue', back: 'Income generated by a business. "The company\'s revenue exceeded expectations."' },
+          ],
+        },
+      },
+    },
+    C1: {
+      games: {
+        'word-match': {
+          type: 'wordmatch',
+          title: 'Word Match — C1',
+          instructions: 'Match each advanced vocabulary item with its precise definition.',
+          pairs: [
+            { word: 'Pragmatic',    match: 'Dealing with things sensibly and realistically' },
+            { word: 'Obfuscate',    match: 'To make something unclear or confusing' },
+            { word: 'Ubiquitous',   match: 'Present everywhere at the same time' },
+            { word: 'Contentious',  match: 'Causing or likely to cause controversy' },
+            { word: 'Tenacity',     match: 'Persistence; determination to continue' },
+            { word: 'Perspicacious',match: 'Having a ready insight; shrewdly perceptive' },
+          ],
+        },
+        'fill-gap': {
+          type: 'fillblank',
+          title: 'Inversion & Emphasis — C1',
+          instructions: 'Choose the correct inverted or emphatic structure.',
+          sentences: [
+            { text: '___ had she finished speaking when the argument broke out.', options: ['Rarely', 'Hardly', 'Never', 'Seldom'], correct: 1 },
+            { text: 'Not until they arrived ___ we realise the scale of the problem.', options: ['had', 'did', 'could', 'would'], correct: 1 },
+            { text: 'Only by working together ___ we hope to succeed.', options: ['can', 'does', 'had', 'will'], correct: 0 },
+            { text: 'Were it not ___ your help, I would have failed.', options: ['for', 'of', 'by', 'with'], correct: 0 },
+            { text: 'Little ___ they know about the surprise planned for them.', options: ['did', 'do', 'had', 'could'], correct: 1 },
+          ],
+        },
+        'speed-translate': {
+          type: 'quiz',
+          title: 'Advanced Collocations — C1',
+          instructions: 'Which word best completes the collocation?',
+          questions: [
+            { text: 'The policy had ___ consequences for public health.', options: ['wide-reaching', 'far-reaching', 'broad-reaching', 'deep-reaching'], correct: 1 },
+            { text: 'She made a ___ point about the flaws in the argument.', options: ['penetrating', 'piercing', 'stabbing', 'cutting'], correct: 0 },
+            { text: 'The organisation is ___ a significant overhaul.', options: ['making', 'doing', 'undertaking', 'performing'], correct: 2 },
+            { text: 'The report ___ a stark warning about climate risks.', options: ['gives', 'issues', 'says', 'tells'], correct: 1 },
+          ],
+        },
+        'spelling-bee': {
+          type: 'quiz',
+          title: 'Advanced Spelling — C1',
+          instructions: 'Identify the correctly spelled word.',
+          questions: [
+            { text: 'Which is correct?', options: ['Desiccated', 'Dessicated', 'Desicated', 'Desiccatted'], correct: 0 },
+            { text: 'Which is correct?', options: ['Questionnaire', 'Questionaire', 'Questionnair', 'Questionnarire'], correct: 0 },
+            { text: 'Which is correct?', options: ['Paralel', 'Parallel', 'Parallell', 'Parallal'], correct: 1 },
+            { text: 'Which is correct?', options: ['Liason', 'Liaison', 'Liasion', 'Liaision'], correct: 1 },
+          ],
+        },
+      },
+      grammar: {
+        'present-simple': {
+          type: 'quiz',
+          title: 'Subjunctive & Formal Structures — C1',
+          instructions: 'Choose the correct formal or subjunctive form.',
+          questions: [
+            { text: 'The committee insists that the report ___ submitted by Friday.', options: ['is', 'be', 'was', 'will be'], correct: 1 },
+            { text: 'It is essential that every participant ___ their ID.', options: ['brings', 'bring', 'brought', 'will bring'], correct: 1 },
+            { text: 'Had she ___ earlier, she would have caught the train.', options: ['left', 'leaves', 'leave', 'leaving'], correct: 0 },
+            { text: 'We suggested that he ___ the terms before signing.', options: ['reconsiders', 'reconsider', 'reconsidering', 'to reconsider'], correct: 1 },
+          ],
+        },
+        'past-tense': {
+          type: 'quiz',
+          title: 'Advanced Cohesion & Discourse — C1',
+          instructions: 'Choose the best discourse marker or linker.',
+          questions: [
+            { text: 'The proposal was innovative; ___, it lacked financial detail.', options: ['moreover', 'nevertheless', 'consequently', 'furthermore'], correct: 1 },
+            { text: '___ his experience, he struggled to manage the team.', options: ['Despite', 'Although', 'However', 'In spite'], correct: 0 },
+            { text: 'The results were inconclusive; ___, further research is needed.', options: ['as a result', 'nevertheless', 'for instance', 'in contrast'], correct: 0 },
+            { text: 'She is not only an expert in law ___ also a skilled negotiator.', options: ['and', 'yet', 'but', 'or'], correct: 2 },
+          ],
+        },
+      },
+      listening: {
+        'cafe-dialogue': {
+          type: 'quiz',
+          title: 'Academic Lecture — C1',
+          instructions: 'Read the extract and answer.',
+          passage: "The concept of cognitive dissonance, introduced by Leon Festinger in 1957, describes the psychological discomfort experienced when a person holds two or more contradictory beliefs simultaneously, or when their actions contradict their beliefs. Festinger proposed that individuals are motivated to reduce this dissonance by changing one of the conflicting beliefs, acquiring new information that supports one belief, or reducing the importance of the conflict. A classic example is a smoker who knows smoking causes cancer yet continues to smoke — they may rationalise by saying 'I'll die of something anyway' or downplay the evidence. This phenomenon has been extensively applied in marketing, political science, and social psychology.",
+          questions: [
+            { text: 'Who introduced the concept of cognitive dissonance?', options: ['Carl Jung', 'Sigmund Freud', 'Leon Festinger', 'B.F. Skinner'], correct: 2 },
+            { text: 'When was the concept introduced?', options: ['1945', '1957', '1963', '1972'], correct: 1 },
+            { text: 'Which is NOT a way Festinger said people reduce dissonance?', options: ['Changing a conflicting belief', 'Acquiring supporting information', 'Avoiding the situation entirely', 'Reducing the importance of the conflict'], correct: 2 },
+            { text: 'What classic example is mentioned?', options: ['An athlete who eats junk food', 'A smoker who knows smoking causes cancer', 'A student who fails to study', 'An investor who ignores financial advice'], correct: 1 },
+          ],
+        },
+        'weather-report': {
+          type: 'quiz',
+          title: 'Political Debate — C1',
+          instructions: 'Read the debate extract and answer.',
+          passage: "First speaker: The evidence for universal basic income is compelling. Pilot schemes in Finland and Kenya demonstrated marked improvements in mental health, reduced anxiety, and increased entrepreneurship amongst recipients. Critics argue it would disincentivise work, but the evidence simply does not support that claim.\nSecond speaker: With respect, the pilot schemes were too small and too short to draw meaningful conclusions. The macroeconomic implications of a nationwide UBI would be staggering — we're talking about potentially doubling the tax burden on working people. The fundamental problem is one of fiscal sustainability.",
+          questions: [
+            { text: 'Where were UBI pilot schemes mentioned?', options: ['USA and Sweden', 'Germany and Brazil', 'Finland and Kenya', 'France and India'], correct: 2 },
+            { text: 'What benefit does the first speaker highlight?', options: ['Increased productivity', 'Improved mental health and entrepreneurship', 'Lower crime rates', 'Better education outcomes'], correct: 1 },
+            { text: 'What does the second speaker say about the pilot schemes?', options: ['They were poorly conducted', 'They were too small and short to conclude', 'They proved UBI fails', 'They were in the wrong countries'], correct: 1 },
+            { text: 'What concern does the second speaker raise about nationwide UBI?', options: ['Social inequality', 'Fiscal sustainability', 'Administrative complexity', 'Inflation'], correct: 1 },
+          ],
+        },
+      },
+      reading: {
+        'news-article': {
+          type: 'quiz',
+          title: 'Philosophy of Language — C1',
+          instructions: 'Read and answer.',
+          passage: "Language does not merely describe reality — it actively shapes it. This is the central claim of the Sapir-Whorf hypothesis, also known as linguistic relativity. In its strong form, the hypothesis holds that language determines thought: speakers of different languages therefore perceive the world in fundamentally different ways. In its weaker form — now more widely accepted — it suggests that language influences but does not fully determine cognition. Evidence for this comes from studies on colour perception, spatial reasoning, and the handling of time. Speakers of languages with more colour terms, for example, demonstrate faster discrimination between colours in those terms.",
+          questions: [
+            { text: 'What is the Sapir-Whorf hypothesis also known as?', options: ['Cognitive determinism', 'Linguistic relativity', 'Cultural materialism', 'Structural semantics'], correct: 1 },
+            { text: 'In its strong form, what does the hypothesis claim?', options: ['Language influences thought', 'Language determines thought', 'Language has no effect on perception', 'Language creates culture'], correct: 1 },
+            { text: 'What is now more widely accepted?', options: ['The strong form', 'That language has no effect', 'The weak form', 'Neither form'], correct: 2 },
+            { text: 'What do studies on colour perception show?', options: ['All languages have the same colour terms', 'Speakers with more colour terms are slower at colour tasks', 'Speakers with more colour terms are faster at discriminating between colours', 'Colour perception is entirely genetic'], correct: 2 },
+          ],
+        },
+        'informal-email': {
+          type: 'quiz',
+          title: 'Academic Essay — C1',
+          instructions: 'Read this essay extract and answer.',
+          passage: "The notion that social media has an unambiguous negative impact on democratic discourse has become something of a received wisdom. Yet a more nuanced examination reveals a contradictory picture. On one hand, platforms such as Twitter and Facebook have undoubtedly facilitated the rapid spread of misinformation, enabled filter bubbles that reinforce existing beliefs, and provided fertile ground for populist demagoguery. On the other hand, they have also empowered marginalised voices, enabled grassroots political organising, and made politicians more directly accountable to citizens. The challenge for democracies lies not in eliminating social media but in designing regulatory frameworks that minimise its harms while preserving its democratic potential.",
+          questions: [
+            { text: 'What is described as a "received wisdom"?', options: ['That social media is always positive', 'That social media has an unambiguously negative impact on democracy', 'That regulation of social media is impossible', 'That platforms are too powerful to control'], correct: 1 },
+            { text: 'Which is NOT listed as a negative effect of social media?', options: ['Spreading misinformation', 'Filter bubbles', 'Empowering marginalised voices', 'Enabling populist demagoguery'], correct: 2 },
+            { text: 'What positive effect does the author highlight?', options: ['Reducing conflict', 'Enabling grassroots political organising', 'Improving journalism', 'Increasing voter turnout'], correct: 1 },
+            { text: 'What does the author suggest the challenge for democracies is?', options: ['Banning social media', 'Designing regulation that limits harm while preserving democratic potential', 'Leaving social media completely unregulated', 'Creating government-controlled platforms'], correct: 1 },
+          ],
+        },
+      },
+      vocab: {
+        'nature-animals': {
+          type: 'flashcard',
+          title: 'Academic Vocabulary — C1',
+          instructions: 'Flip each card to learn high-level academic vocabulary.',
+          cards: [
+            { front: '🔍 Empirical', back: 'Based on observation or experience rather than theory. "The study provided empirical evidence for the hypothesis."' },
+            { front: '⚡ Paradigm Shift', back: 'A fundamental change in the dominant approach. "Darwin caused a paradigm shift in our understanding of life."' },
+            { front: '🌀 Dichotomy', back: 'A division into two contrasting categories. "There is a false dichotomy between freedom and security."' },
+            { front: '📚 Epistemology', back: 'The branch of philosophy concerned with knowledge. "Epistemology asks: how do we know what we know?"' },
+            { front: '🔗 Hegemony', back: 'Dominance or leadership, especially of one state over others. "American cultural hegemony is felt worldwide."' },
+            { front: '🌐 Zeitgeist', back: 'The spirit or mood of a particular period. "The film perfectly captured the zeitgeist of the 1960s."' },
+            { front: '⚖️ Dialectic', back: 'A process of resolving contradictions through reasoned argument. "Hegel\'s dialectic: thesis, antithesis, synthesis."' },
+            { front: '🧠 Cognition', back: 'The mental processes involved in acquiring knowledge. "Language acquisition is a complex cognitive process."' },
+          ],
+        },
+        'home-furniture': {
+          type: 'flashcard',
+          title: 'Law & Politics — C1',
+          instructions: 'Flip each card.',
+          cards: [
+            { front: '⚖️ Jurisprudence', back: 'The theory or philosophy of law. "He specialises in jurisprudence and human rights."' },
+            { front: '🏛️ Sovereignty', back: 'Supreme authority within a territory. "Brexit raised questions about parliamentary sovereignty."' },
+            { front: '📜 Legislation', back: 'Laws enacted by a governing body. "New legislation was passed to restrict emissions."' },
+            { front: '🤝 Diplomacy', back: 'Conducting international relations through negotiation. "Diplomacy prevented the conflict from escalating."' },
+            { front: '🔐 Judiciary', back: 'The system of courts in a country. "The judiciary must remain independent of political influence."' },
+            { front: '🗳️ Referendum', back: 'A public vote on a specific question. "The country held a referendum on independence."' },
+            { front: '📊 Geopolitics', back: 'How geography influences politics. "Oil reserves are central to Middle East geopolitics."' },
+            { front: '🌍 Multilateralism', back: 'Cooperation among multiple countries. "Climate change requires multilateralism to solve."' },
+          ],
+        },
+      },
+    },
+    C2: {
+      games: {
+        'word-match': {
+          type: 'wordmatch',
+          title: 'Word Match — C2',
+          instructions: 'Match each rare or literary word to its precise meaning.',
+          pairs: [
+            { word: 'Sycophant',    match: 'A person who flatters to gain advantage' },
+            { word: 'Laconic',      match: 'Using very few words; brief and concise' },
+            { word: 'Loquacious',   match: 'Tending to talk a great deal' },
+            { word: 'Pusillanimous',match: 'Lacking courage; timid' },
+            { word: 'Insouciant',   match: 'Showing a casual lack of concern' },
+            { word: 'Pellucid',     match: 'Translucently clear; easily understood' },
+          ],
+        },
+        'fill-gap': {
+          type: 'fillblank',
+          title: 'Nuanced Register — C2',
+          instructions: 'Choose the word that best fits the formal or literary context.',
+          sentences: [
+            { text: 'The author\'s prose is ___ by its poetic rhythm and precise diction.', options: ['distinguished', 'noted', 'remarked', 'spotted'], correct: 0 },
+            { text: 'He was ___ unwilling to concede the point, even in the face of overwhelming evidence.', options: ['palpably', 'visibly', 'patently', 'hardly'], correct: 2 },
+            { text: 'The painting ___ a melancholy that transcends its historical context.', options: ['shows', 'radiates', 'exudes', 'has'], correct: 2 },
+            { text: 'Her argumentation was ___ in its logical rigour.', options: ['flawing', 'irresistible', 'flawless', 'faultless'], correct: 3 },
+            { text: 'The policy\'s ___ consequences were far more damaging than its intended outcomes.', options: ['inadvertent', 'unforeseen', 'unintended', 'unwanted'], correct: 1 },
+          ],
+        },
+        'speed-translate': {
+          type: 'quiz',
+          title: 'Literary Devices — C2',
+          instructions: 'Identify these literary devices.',
+          questions: [
+            { text: '"The wind is a torrent of darkness." What device is this?', options: ['Simile', 'Metaphor', 'Personification', 'Hyperbole'], correct: 1 },
+            { text: '"She sells seashells by the seashore." What device is this?', options: ['Assonance', 'Onomatopoeia', 'Alliteration', 'Euphemism'], correct: 2 },
+            { text: '"I\'ve told you a million times." What device is this?', options: ['Litotes', 'Hyperbole', 'Understatement', 'Irony'], correct: 1 },
+            { text: '"He is not the most intelligent." What device is this?', options: ['Hyperbole', 'Metaphor', 'Litotes', 'Synecdoche'], correct: 2 },
+          ],
+        },
+        'spelling-bee': {
+          type: 'quiz',
+          title: 'Mastery Spelling — C2',
+          instructions: 'Identify the correctly spelled word — all very tricky.',
+          questions: [
+            { text: 'Which is correct?', options: ['Psycology', 'Psychology', 'Psycology', 'Psychollogy'], correct: 1 },
+            { text: 'Which is correct?', options: ['Conscientiously', 'Conscienciously', 'Consciantiously', 'Consientiously'], correct: 0 },
+            { text: 'Which is correct?', options: ['Idiosyncrasy', 'Idiosyncracy', 'Idiosincracy', 'Idiocyncracy'], correct: 0 },
+            { text: 'Which is correct?', options: ['Soliloquy', 'Soliloqy', 'Solliloquy', 'Soliloquy'], correct: 0 },
+          ],
+        },
+      },
+      grammar: {
+        'present-simple': {
+          type: 'quiz',
+          title: 'Ellipsis, Clefting & Fronting — C2',
+          instructions: 'Select the grammatically correct or most natural form.',
+          questions: [
+            { text: 'It was ___ that caused the confusion, not the report itself.', options: ['the delay', 'the delayed', 'delayed', 'delaying'], correct: 0 },
+            { text: '"Never ___ he seemed so defeated." Which is correct?', options: ['had before', 'before had', 'did before', 'before did'], correct: 0 },
+            { text: 'She didn\'t call, nor ___.',  options: ['did she write', 'she wrote', 'she did write', 'wrote she'], correct: 0 },
+            { text: '"What I value most ___ integrity." Choose the correct form.', options: ['are', 'is', 'be', 'has been'], correct: 1 },
+          ],
+        },
+        'past-tense': {
+          type: 'quiz',
+          title: 'Aspect, Modality & Nuance — C2',
+          instructions: 'Choose the most precise form.',
+          questions: [
+            { text: '"She ___ to be working on a novel." (rumour / present)',  options: ['is said', 'says', 'is saying', 'said'], correct: 0 },
+            { text: '"He ___ at the party — I saw him leave early." (probably wasn\'t)',  options: ['can\'t have been', 'mustn\'t be', 'shouldn\'t have been', 'may not be'], correct: 0 },
+            { text: '"I ___ you not to trust him." (strong past warning)',  options: ['told', 'have told', 'would tell', 'will have told'], correct: 0 },
+            { text: '"By the time the review is published, the data ___ out of date."', options: ['will become', 'will have become', 'becomes', 'has become'], correct: 1 },
+          ],
+        },
+      },
+      listening: {
+        'cafe-dialogue': {
+          type: 'quiz',
+          title: 'Philosophy Lecture — C2',
+          instructions: 'Read and answer at mastery level.',
+          passage: "The question of whether moral values are objective or merely expressions of cultural convention is at the heart of meta-ethics. Moral relativists contend that there are no universal moral truths — what counts as right or wrong varies across cultures and is not subject to objective criteria. In contrast, moral realists argue that moral facts exist independently of what anyone believes about them, much as mathematical truths do. Midway stands constructivism, which holds that moral norms are neither simply discovered nor merely invented, but constructed through rational agreement. Each position carries profound implications for how we approach global human rights, cross-cultural dialogue, and the limits of political authority.",
+          questions: [
+            { text: 'What do moral relativists argue?', options: ['All cultures share the same values', 'There are no universal moral truths', 'Moral facts are objective', 'Reason can determine morality'], correct: 1 },
+            { text: 'What does moral realism claim?', options: ['Morality is culturally determined', 'Moral facts exist independently of belief', 'Morality is invented', 'Morality is irrelevant'], correct: 1 },
+            { text: 'How does constructivism differ from both?', options: ['It agrees with relativism', 'It agrees with realism', 'It says norms are constructed through rational agreement', 'It rejects ethics entirely'], correct: 2 },
+            { text: 'What does this debate affect, according to the passage?', options: ['Only academic philosophy', 'Human rights, cross-cultural dialogue, and political authority', 'Religious institutions only', 'Economic policy'], correct: 1 },
+          ],
+        },
+        'weather-report': {
+          type: 'quiz',
+          title: 'Literary Analysis — C2',
+          instructions: 'Read this critical analysis and answer.',
+          passage: "In Kazuo Ishiguro\'s The Remains of the Day, the narrator Stevens embodies a particular mode of self-deception. His meticulous obsession with professional dignity — 'dignity' being the novel\'s central organising concept — serves as a psychological defence against confronting the moral compromises he has made in service of a Nazi sympathiser. Ishiguro uses free indirect discourse to grant the reader privileged access to the gap between Stevens\'s stated values and his actual behaviour. The unreliable narrator, a staple of Modernist fiction, here becomes a vehicle for examining how individuals rationalise complicity in historical atrocity.",
+          questions: [
+            { text: 'What is the novel\'s central organising concept?', options: ['Love', 'Memory', 'Dignity', 'Duty'], correct: 2 },
+            { text: 'What function does Stevens\'s obsession with dignity serve?', options: ['Professional ambition', 'A defence against confronting moral compromise', 'Simple pride', 'Political loyalty'], correct: 1 },
+            { text: 'What device does Ishiguro use to reveal Stevens\'s self-deception?', options: ['Third-person omniscient narration', 'Stream of consciousness', 'Free indirect discourse', 'Dramatic monologue'], correct: 2 },
+            { text: 'What broader theme does the unreliable narrator explore?', options: ['Romance in wartime', 'Ambition and class', 'How individuals rationalise complicity in atrocity', 'Cultural differences in Britain'], correct: 2 },
+          ],
+        },
+      },
+      reading: {
+        'news-article': {
+          type: 'quiz',
+          title: 'Theoretical Physics — C2',
+          instructions: 'Read at mastery level.',
+          passage: "The Copenhagen interpretation of quantum mechanics, formulated principally by Niels Bohr and Werner Heisenberg in the 1920s, holds that physical systems do not have definite properties prior to measurement; rather, measurement itself causes the 'collapse' of the wave function into a definite state. This sits in tension with the Many-Worlds interpretation proposed by Hugh Everett in 1957, which denies the collapse entirely: instead, each quantum measurement causes the universe to 'branch' into multiple non-communicating copies, each realising a different outcome. While the Copenhagen interpretation remains pedagogically dominant, Many-Worlds has attracted increasing support from physicists drawn to its ontological parsimony — it requires no special mechanism for collapse.",
+          questions: [
+            { text: 'Who principally formulated the Copenhagen interpretation?', options: ['Einstein and Planck', 'Bohr and Heisenberg', 'Everett and Schrödinger', 'Dirac and Born'], correct: 1 },
+            { text: 'What does the Copenhagen interpretation say about measurement?', options: ['Measurement has no effect on the system', 'Measurement causes wave function collapse', 'Measurement is impossible at quantum scale', 'Measurement creates new particles'], correct: 1 },
+            { text: 'What does the Many-Worlds interpretation propose instead of collapse?', options: ['Quantum tunnelling', 'Universal constants', 'The universe branches into multiple copies', 'A hidden variable theory'], correct: 2 },
+            { text: 'Why do some physicists prefer Many-Worlds?', options: ['It is simpler mathematically', 'It is easier to teach', 'Because of its ontological parsimony (no collapse mechanism needed)', 'Because Everett was more famous'], correct: 2 },
+          ],
+        },
+        'informal-email': {
+          type: 'quiz',
+          title: 'Critical Theory — C2',
+          instructions: 'Read this critical theory extract and answer.',
+          passage: "Derrida\'s concept of différance — a neologism blending \'difference\' and \'deferral\' — challenges the Western metaphysical tradition of privileging presence. For Derrida, meaning in language is never fully present; it is always deferred through an endless chain of signifiers. No word has a fixed meaning rooted in an originary signified: meaning only arises relationally, through what a term is not. This \'deconstruction\' of binary oppositions — speech over writing, presence over absence, reason over emotion — reveals these hierarchies to be unstable and historically contingent rather than natural or necessary. Derrida's project was not to reverse these hierarchies but to expose their constructed nature.",
+          questions: [
+            { text: 'What two words does "différance" blend?', options: ['Difference and defer', "Difference and 'deferral'", 'Distance and difference', 'Duration and difference'], correct: 1 },
+            { text: 'What does Derrida claim about meaning in language?', options: ['It is fixed in the dictionary', 'It is always fully present', 'It is never fully present; always deferred', 'It depends only on context'], correct: 2 },
+            { text: 'How does meaning arise according to Derrida?', options: ['Through dictionary definitions', 'Through the speaker\'s intention', 'Relationally — through what a term is not', 'Through grammatical rules'], correct: 2 },
+            { text: 'What was Derrida\'s goal with binary oppositions?', options: ['To reverse them', 'To celebrate them', 'To expose their constructed nature', 'To eliminate language altogether'], correct: 2 },
+          ],
+        },
+      },
+      vocab: {
+        'nature-animals': {
+          type: 'flashcard',
+          title: 'Rare & Literary Words — C2',
+          instructions: 'Flip each card. These are rare but useful words.',
+          cards: [
+            { front: '🪄 Ineffable', back: 'Too great or extreme to be expressed in words. "The view from the summit was ineffable."' },
+            { front: '🌑 Stygian', back: 'Extremely dark; of or relating to the river Styx. "The stygian depths of the abandoned mine."' },
+            { front: '🕊️ Sanguine', back: 'Optimistic, especially in difficult situations. "She remained sanguine despite the setbacks."' },
+            { front: '🌀 Liminal', back: 'Relating to a transitional or intermediate state. "Adolescence is a liminal period between childhood and adulthood."' },
+            { front: '🎭 Anodyne', back: 'Not likely to offend or arouse controversy; inoffensive. "His speech was full of anodyne platitudes."' },
+            { front: '📖 Palimpsest', back: 'Something with layers from different eras; historically a manuscript where older text shows through. "The city is a palimpsest of past civilisations."' },
+            { front: '⚗️ Apocryphal', back: 'Of doubtful authenticity; widely circulated but probably not true. "Many stories about the emperor are apocryphal."' },
+            { front: '🌊 Bathetic', back: 'Producing an effect of anticlimax; disappointingly commonplace. "The play\'s ending was bathetic after its dramatic opening."' },
+          ],
+        },
+        'home-furniture': {
+          type: 'flashcard',
+          title: 'Rhetorical & Philosophical Terms — C2',
+          instructions: 'Flip each card to master these high-level terms.',
+          cards: [
+            { front: '🔄 Dialectical Materialism', back: 'Marx\'s philosophical framework combining Hegel\'s dialectic with materialism. "Dialectical materialism sees history driven by material conditions."' },
+            { front: '🧩 Aporia', back: 'A philosophical puzzle or state of perplexity. "Plato\'s early dialogues often end in aporia."' },
+            { front: '🌐 Teleology', back: 'The explanation of phenomena by their ends or purposes. "Aristotle\'s teleology explains nature through final causes."' },
+            { front: '⚖️ Deontology', back: 'Ethics based on rules and duties. "Kantian deontology says some actions are intrinsically wrong."' },
+            { front: '🎯 Reductio ad Absurdum', back: 'Disproving an argument by showing its logical conclusion is absurd. "The philosopher used reductio ad absurdum to defeat the claim."' },
+            { front: '📐 Occam\'s Razor', back: 'The principle that the simplest explanation is usually correct. "Occam\'s Razor suggests we should not multiply entities beyond necessity."' },
+            { front: '🌀 Solipsism', back: 'The view that only one\'s own mind is sure to exist. "His extreme solipsism made him distrust all external evidence."' },
+            { front: '🏛️ Logos', back: 'Reason, logic or discourse; also a rhetorical appeal to logic. "He won the debate through logos — cold, irrefutable facts."' },
+          ],
+        },
+      },
+    },
+  },
+}
+
+/**
+ * Get activity content for a specific language, level, module, and activity.
+ */
+export function getActivityContent(langId, levelId, moduleId, activityId) {
+  return ACTIVITY_CONTENT?.[langId]?.[levelId]?.[moduleId]?.[activityId] ?? null
+}

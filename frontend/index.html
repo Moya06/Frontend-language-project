@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grammar Languages</title>
+  <link rel="stylesheet" href="src/styles/main.css" />
+</head>
+<body>
+
+<!-- ── Animated background orbs ── -->
+<div class="bg-orbs">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+  <div class="orb orb-4"></div>
+</div>
+
+<div class="container">
+
+  <!-- ── Header ── -->
+  <header>
+    <div class="logo">🌐 Grammar Languages</div>
+    <p class="tagline">Master a language through structured levels, games & interactive practice</p>
+  </header>
+
+  <!-- ═══════════════════════════════════════════
+       HOME SCREEN — Level selector
+  ════════════════════════════════════════════ -->
+  <div id="homeScreen" class="screen active">
+
+    <!-- Stats bar -->
+    <div class="stats-bar">
+      <div class="glass stat-card">
+        <div class="stat-number">6</div>
+        <div class="stat-label">CEFR Levels</div>
+      </div>
+      <div class="glass stat-card">
+        <div class="stat-number">5</div>
+        <div class="stat-label">Modules</div>
+      </div>
+      <div class="glass stat-card">
+        <div class="stat-number" id="totalExercises">150+</div>
+        <div class="stat-label">Exercises</div>
+      </div>
+      <div class="glass stat-card">
+        <div class="stat-number" id="totalProgress">0%</div>
+        <div class="stat-label">My Progress</div>
+      </div>
+    </div>
+
+    <div class="section-title">Choose your level</div>
+    <div class="levels-grid" id="levelsGrid">
+      <!-- Injected by JS -->
+    </div>
+
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       MODULE SCREEN — Modules for one level
+  ════════════════════════════════════════════ -->
+  <div id="moduleScreen" class="screen">
+    <button class="back-btn" onclick="goHome()">← All levels</button>
+    <div class="level-header" id="levelHeader"></div>
+    <div class="section-title">Choose a module</div>
+    <div class="modules-grid" id="modulesGrid"></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       CONTENT SCREEN — Inside a module
+  ════════════════════════════════════════════ -->
+  <div id="contentScreen" class="screen">
+    <button class="back-btn" onclick="goModules()">← Back to modules</button>
+    <div id="contentHeader"></div>
+    <div id="contentBody"></div>
+  </div>
+
+</div><!-- /container -->
+
+<script>
+/* ══════════════════════════════════════════════
+   DATA
+══════════════════════════════════════════════ */
+const LEVELS = [
+  {
+    id: 'A1', label: 'Beginner',
+    desc: 'Basic everyday expressions & simple introductions.',
+    color: '#10b981',
+    progress: 0, exercises: 24,
+  },
+  {
+    id: 'A2', label: 'Elementary',
+    desc: 'Familiar topics, routine tasks & simple communication.',
+    color: '#34d399',
+    progress: 0, exercises: 28,
+  },
+  {
+    id: 'B1', label: 'Intermediate',
+    desc: 'Travel, work, school & most everyday situations.',
+    color: '#3b82f6',
+    progress: 0, exercises: 30,
+  },
+  {
+    id: 'B2', label: 'Upper-Intermediate',
+    desc: 'Complex texts, fluent conversation & debate.',
+    color: '#6366f1',
+    progress: 0, exercises: 28,
+  },
+  {
+    id: 'C1', label: 'Advanced',
+    desc: 'Flexible, effective use for social, academic & professional needs.',
+    color: '#a78bfa',
+    progress: 0, exercises: 22,
+  },
+  {
+    id: 'C2', label: 'Mastery',
+    desc: 'Near-native precision, nuance & full idiomatic range.',
+    color: '#ec4899',
+    progress: 0, exercises: 18,
+  },
+];
+
+const MODULES = [
+  {
+    id: 'games',     icon: '🎮',
+    name: 'Games',
+    desc: 'Learn while playing interactive mini-games',
+    accentColor: 'linear-gradient(90deg, #f59e0b, #ef4444)',
+  },
+  {
+    id: 'grammar',   icon: '📝',
+    name: 'Grammar',
+    desc: 'Rules, patterns & structured exercises',
+    accentColor: 'linear-gradient(90deg, #3b82f6, #06b6d4)',
+  },
+  {
+    id: 'listening', icon: '🎧',
+    name: 'Listening',
+    desc: 'Audio tracks & comprehension questions',
+    accentColor: 'linear-gradient(90deg, #10b981, #34d399)',
+  },
+  {
+    id: 'reading',   icon: '📖',
+    name: 'Reading',
+    desc: 'Graded texts, articles & stories',
+    accentColor: 'linear-gradient(90deg, #8b5cf6, #a78bfa)',
+  },
+  {
+    id: 'vocab',     icon: '💬',
+    name: 'Vocabulary',
+    desc: 'Flashcards, word lists & spaced repetition',
+    accentColor: 'linear-gradient(90deg, #ec4899, #f43f5e)',
+  },
+];
+
+/* Sample content per module */
+const SAMPLE_CONTENT = {
+  games: [
+    { title: '🔤 Word Match', type: 'Match words with definitions', locked: false },
+    { title: '🧩 Fill the Gap', type: 'Complete sentences', locked: false },
+    { title: '⏱️ Speed Translate', type: 'Fast-paced translation', locked: true },
+    { title: '🎯 Spelling Bee', type: 'Listen & spell', locked: true },
+  ],
+  grammar: [
+    { title: 'Present Simple', type: 'Theory + 10 exercises', locked: false },
+    { title: 'Articles (a/an/the)', type: 'Rules + 8 exercises', locked: false },
+    { title: 'Past Tense', type: 'Theory + 12 exercises', locked: true },
+    { title: 'Conditionals', type: 'Levels + mixed drills', locked: true },
+  ],
+  listening: [
+    { title: '🎙️ Dialogue at a café', type: 'Audio · 2 min · 5 questions', locked: false },
+    { title: '📻 Weather report', type: 'Audio · 1.5 min · 4 questions', locked: false },
+    { title: '🎬 Movie scene', type: 'Audio · 3 min · 6 questions', locked: true },
+  ],
+  reading: [
+    { title: '📰 Short news article', type: 'Text · 150 words · 5 questions', locked: false },
+    { title: '✉️ Informal email', type: 'Text · 100 words · 4 questions', locked: false },
+    { title: '📄 Formal letter', type: 'Text · 220 words · 6 questions', locked: true },
+  ],
+  vocab: [
+    { title: '🌿 Nature & Animals', type: '20 words · Flashcards', locked: false },
+    { title: '🏠 Home & Furniture', type: '18 words · Flashcards', locked: false },
+    { title: '💼 Work & Professions', type: '25 words · Flashcards', locked: true },
+    { title: '🍽️ Food & Cooking', type: '22 words · Flashcards', locked: true },
+  ],
+};
+
+/* ══════════════════════════════════════════════
+   STATE
+══════════════════════════════════════════════ */
+let currentLevel  = null;
+let currentModule = null;
+
+/* ══════════════════════════════════════════════
+   RENDER — Home
+══════════════════════════════════════════════ */
+function renderHome() {
+  const grid = document.getElementById('levelsGrid');
+  grid.innerHTML = LEVELS.map(lv => {
+    const cls = 'level-' + lv.id.toLowerCase();
+    const tags = MODULES.map(m =>
+      `<span class="level-module-tag">${m.icon} ${m.name}</span>`
+    ).join('');
+    return `
+      <div class="glass level-card ${cls}" onclick="openLevel('${lv.id}')">
+        <div class="level-badge">${lv.id}</div>
+        <div class="level-name">${lv.id} · ${lv.label}</div>
+        <div class="level-desc">${lv.desc}</div>
+        <div class="level-modules">${tags}</div>
+        <div class="progress-wrap">
+          <div class="progress-bar">
+            <div class="progress-fill" style="width:${lv.progress}%"></div>
+          </div>
+          <div class="progress-pct">${lv.progress}%</div>
+        </div>
+        <div class="card-arrow">→</div>
+      </div>
+    `;
+  }).join('');
+}
+
+/* ══════════════════════════════════════════════
+   RENDER — Module list
+══════════════════════════════════════════════ */
+function openLevel(levelId) {
+  currentLevel = LEVELS.find(l => l.id === levelId);
+  const { id, label, desc, color } = currentLevel;
+
+  /* Header */
+  document.getElementById('levelHeader').innerHTML = `
+    <div class="level-header-badge"
+         style="background:${color}1a; color:${color}; border-color:${color}44">
+      ${id}
+    </div>
+    <div class="level-header-info">
+      <h2>${id} · ${label}</h2>
+      <p>${desc}</p>
+    </div>
+  `;
+
+  /* Modules */
+  document.getElementById('modulesGrid').innerHTML = MODULES.map(m => `
+    <div class="glass module-card" onclick="openModule('${m.id}')">
+      <span class="module-icon">${m.icon}</span>
+      <div class="module-name">${m.name}</div>
+      <div class="module-desc">${m.desc}</div>
+      <div class="module-accent" style="background:${m.accentColor}"></div>
+    </div>
+  `).join('');
+
+  showScreen('moduleScreen');
+}
+
+/* ══════════════════════════════════════════════
+   RENDER — Content inside module
+══════════════════════════════════════════════ */
+function openModule(moduleId) {
+  currentModule = MODULES.find(m => m.id === moduleId);
+  const items = SAMPLE_CONTENT[moduleId] || [];
+
+  document.getElementById('contentHeader').innerHTML = `
+    <div style="display:flex;align-items:center;gap:1rem;margin-bottom:2rem">
+      <span style="font-size:2.8rem">${currentModule.icon}</span>
+      <div>
+        <h2 style="font-size:1.6rem;font-weight:800">
+          ${currentModule.name}
+          <span style="font-size:1rem;font-weight:500;color:rgba(255,255,255,.4);margin-left:.6rem">
+            · ${currentLevel.id}
+          </span>
+        </h2>
+        <p style="color:rgba(255,255,255,.45);font-size:.9rem">${currentModule.desc}</p>
+      </div>
+    </div>
+    <div class="section-title">Available activities</div>
+  `;
+
+  document.getElementById('contentBody').innerHTML = `
+    <div style="display:flex;flex-direction:column;gap:.9rem">
+      ${items.map((item, i) => `
+        <div class="glass" style="
+          padding:1.4rem 1.6rem;
+          display:flex;align-items:center;gap:1.2rem;
+          cursor:${item.locked ? 'not-allowed' : 'pointer'};
+          opacity:${item.locked ? '.45' : '1'};
+          transition:all .25s;
+          ${item.locked ? '' : 'cursor:pointer'}
+        "
+        ${item.locked ? '' : `onmouseenter="this.style.background='rgba(255,255,255,.09)'"
+                              onmouseleave="this.style.background='rgba(255,255,255,.05)'"`}
+        onclick="${item.locked ? '' : `startActivity(${i})`}">
+          <div style="
+            width:44px;height:44px;border-radius:12px;
+            background:${item.locked ? 'rgba(255,255,255,.06)' : currentModule.accentColor.replace('linear-gradient(90deg,','').split(',')[0].trim() + '22'};
+            display:flex;align-items:center;justify-content:center;
+            font-size:1.3rem;flex-shrink:0;
+            border:1px solid rgba(255,255,255,.08);
+          ">${getActivityIcon(moduleId, i)}</div>
+          <div style="flex:1">
+            <div style="font-weight:700;font-size:.95rem;margin-bottom:.25rem">${item.title}</div>
+            <div style="font-size:.78rem;color:rgba(255,255,255,.45)">${item.type}</div>
+          </div>
+          ${item.locked
+            ? '<span style="font-size:1.1rem;color:rgba(255,255,255,.25)">🔒</span>'
+            : '<span style="color:rgba(255,255,255,.3);font-size:1rem">→</span>'
+          }
+        </div>
+      `).join('')}
+    </div>
+  `;
+
+  showScreen('contentScreen');
+}
+
+/* ══════════════════════════════════════════════
+   HELPERS
+══════════════════════════════════════════════ */
+const activityIcons = {
+  games:     ['🔤','🧩','⏱️','🎯'],
+  grammar:   ['📘','📗','📙','📚'],
+  listening: ['🎙️','📻','🎬'],
+  reading:   ['📰','✉️','📄'],
+  vocab:     ['🌿','🏠','💼','🍽️'],
+};
+
+function getActivityIcon(mod, idx) {
+  const icons = activityIcons[mod] || [];
+  return icons[idx] || '📌';
+}
+
+function startActivity(idx) {
+  showToast(`Starting "${SAMPLE_CONTENT[currentModule.id][idx].title}"...`);
+}
+
+/* Toast notification */
+let toastTimer = null;
+function showToast(msg) {
+  let t = document.getElementById('toast');
+  if (!t) {
+    t = document.createElement('div');
+    t.id = 'toast';
+    t.style.cssText = `
+      position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(20px);
+      background:rgba(255,255,255,.12);backdrop-filter:blur(20px);
+      border:1px solid rgba(255,255,255,.15);border-radius:14px;
+      padding:.85rem 1.6rem;font-size:.9rem;color:#fff;
+      transition:all .3s;opacity:0;z-index:999;white-space:nowrap;
+    `;
+    document.body.appendChild(t);
+  }
+  clearTimeout(toastTimer);
+  t.textContent = msg;
+  requestAnimationFrame(() => {
+    t.style.opacity = '1';
+    t.style.transform = 'translateX(-50%) translateY(0)';
+  });
+  toastTimer = setTimeout(() => {
+    t.style.opacity = '0';
+    t.style.transform = 'translateX(-50%) translateY(20px)';
+  }, 2800);
+}
+
+/* Screen transitions */
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function goHome() {
+  currentLevel = null;
+  showScreen('homeScreen');
+}
+
+function goModules() {
+  showScreen('moduleScreen');
+}
+
+/* ══════════════════════════════════════════════
+   INIT
+══════════════════════════════════════════════ */
+renderHome();
+</script>
+
+</body>
+</html>

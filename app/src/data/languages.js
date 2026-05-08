@@ -1,0 +1,32 @@
+export const LANGUAGES = [
+  {
+    id: 'en',
+    name: 'English',
+    nativeName: 'English',
+    flag: '🇬🇧',
+    color: '#3b82f6',
+    gradient: 'from-blue-500/20 to-sky-500/10',
+    description: 'The global language of business, science & culture.',
+    speakers: '1.5B speakers',
+  },
+  {
+    id: 'it',
+    name: 'Italian',
+    nativeName: 'Italiano',
+    flag: '🇮🇹',
+    color: '#10b981',
+    gradient: 'from-emerald-500/20 to-green-500/10',
+    description: 'The language of art, cuisine & the Renaissance.',
+    speakers: '85M speakers',
+  },
+  {
+    id: 'pt',
+    name: 'Portuguese',
+    nativeName: 'Português',
+    flag: '🇧🇷',
+    color: '#f59e0b',
+    gradient: 'from-amber-500/20 to-yellow-500/10',
+    description: 'Spoken across Brazil, Portugal & Africa.',
+    speakers: '260M speakers',
+  },
+]

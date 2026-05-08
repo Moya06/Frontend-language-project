@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { Globe, Eye, EyeOff, LogIn, Loader2 } from 'lucide-react'
 import { useApp } from '../store/AppContext'
 import { T } from '../data/i18n'
+import { loginWithApi, persistTokens } from '../services/authApi'
 import clsx from 'clsx'
 
 const Orbs = () => (
@@ -111,29 +112,14 @@ export default function Login() {
 
     setLoading(true)
     try {
-      // ── Replace this block with your real API call ─────────────────────
-      // Example:
-      //   const { user, accessToken, refreshToken } = await authService.login({ email, password })
-      //   localStorage.setItem('gl_access',  accessToken)
-      //   localStorage.setItem('gl_refresh', refreshToken)
-      //   dispatch({ type: 'AUTH_LOGIN', payload: user })
-      //   navigate('/')
-      // ───────────────────────────────────────────────────────────────────
+      const session = await loginWithApi({
+        email: email.trim().toLowerCase(),
+        password,
+      })
 
-      // ── Demo / placeholder ─────────────────────────────────────────────
-      await new Promise(r => setTimeout(r, 900))
-      const demoUser = {
-        id:          '1',
-        email:       email.trim().toLowerCase(),
-        username:    email.split('@')[0],
-        displayName: email.split('@')[0],
-        xp:          0,
-        level:       1,
-        role:        'USER',
-      }
-      dispatch({ type: 'AUTH_LOGIN', payload: demoUser })
+      persistTokens(session.tokens)
+      dispatch({ type: 'AUTH_LOGIN', payload: session.user })
       navigate('/', { replace: true })
-      // ───────────────────────────────────────────────────────────────────
     } catch (err) {
       setError(err?.message || l.errorBad)
     } finally {

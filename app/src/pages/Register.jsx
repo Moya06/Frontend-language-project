@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Globe, Eye, EyeOff, UserPlus, Loader2, Check } from 'lucide-react'
 import { useApp } from '../store/AppContext'
+import { registerWithApi, persistTokens } from '../services/authApi'
 import clsx from 'clsx'
 
 const Orbs = () => (
@@ -141,31 +142,16 @@ export default function Register() {
 
     setLoading(true)
     try {
-      // ── Replace this block with your real API call ─────────────────────
-      // Example:
-      //   const { user, accessToken, refreshToken } = await authService.register({
-      //     email, username, password, displayName: username,
-      //   })
-      //   localStorage.setItem('gl_access',  accessToken)
-      //   localStorage.setItem('gl_refresh', refreshToken)
-      //   dispatch({ type: 'AUTH_LOGIN', payload: user })
-      //   navigate('/select')   // go to language select for new users
-      // ───────────────────────────────────────────────────────────────────
-
-      // ── Demo / placeholder ─────────────────────────────────────────────
-      await new Promise(r => setTimeout(r, 1000))
-      const demoUser = {
-        id:          Date.now().toString(),
-        email:       email.trim().toLowerCase(),
-        username:    username.trim(),
+      const session = await registerWithApi({
+        email: email.trim().toLowerCase(),
+        username: username.trim(),
+        password,
         displayName: username.trim(),
-        xp:          0,
-        level:       1,
-        role:        'USER',
-      }
-      dispatch({ type: 'AUTH_LOGIN', payload: demoUser })
+      })
+
+      persistTokens(session.tokens)
+      dispatch({ type: 'AUTH_LOGIN', payload: session.user })
       navigate('/select', { replace: true })
-      // ───────────────────────────────────────────────────────────────────
     } catch (err) {
       setError(err?.message || 'Something went wrong')
     } finally {

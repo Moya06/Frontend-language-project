@@ -1,4 +1,4 @@
-const RAW_API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000/api/v1'
+const RAW_API_URL = import.meta.env.VITE_API_URL || '/api/v1'
 const API_BASE = RAW_API_URL.replace(/\/+$/, '')
 
 function resolveAuthPayload(json) {

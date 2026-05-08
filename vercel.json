@@ -3,5 +3,11 @@
   "framework": "vite",
   "installCommand": "npm install --prefix app",
   "buildCommand": "npm run build --prefix app",
-  "outputDirectory": "app/dist"
+  "outputDirectory": "app/dist",
+  "rewrites": [
+    {
+      "source": "/api/v1/:path*",
+      "destination": "https://backend-language-project.vercel.app/api/v1/:path*"
+    }
+  ]
 }
